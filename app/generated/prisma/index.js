@@ -161,7 +161,11 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
+<<<<<<< HEAD
     "rootEnvPath": null,
+=======
+    "rootEnvPath": "../../../.env",
+>>>>>>> 89c328fef00f9629cdc1f6b1a4bfa48c359713ad
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",

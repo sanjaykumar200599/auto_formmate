@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+<<<<<<< HEAD
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -8,5 +9,11 @@ export default function Home() {
     <Button>Please subscribe</Button>
     <h1>Helo world</h1>
     </div>
+=======
+
+export default function Home() {
+  return (
+   <h1>Hello world</h1>
+>>>>>>> 89c328fef00f9629cdc1f6b1a4bfa48c359713ad
   );
 }

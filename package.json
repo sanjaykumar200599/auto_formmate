@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@clerk/nextjs": "^6.14.3",
     "@prisma/client": "^6.6.0",
     "@radix-ui/react-slot": "^1.2.0",
@@ -19,6 +20,12 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.2.0",
+=======
+    "@prisma/client": "^6.6.0",
+    "next": "15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+>>>>>>> 89c328fef00f9629cdc1f6b1a4bfa48c359713ad
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
