@@ -13,7 +13,7 @@ const PageNotFound = () => {
         href="/"
         className="inline-block px-6 py-3 bg-red-600 text-white rounded-2xl shadow hover:bg-green-700 transition"
       >
-        Go Home
+        Return Home
       </a>
     </div>
   </div>
