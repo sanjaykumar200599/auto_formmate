@@ -1,4 +1,4 @@
-// import { DarkMode } from "@/components/DarkMode";
+import { DarkMode } from "@/components/Darkmode";
 import Logo from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
@@ -18,7 +18,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
               <Button variant={"link"}>Dashboard</Button>
             </Link>
             <UserButton afterSignOutUrl="/sign-in" />
-            {/* <DarkMode />  */}
+           <DarkMode/>
           </div>
         </nav>
       </div>

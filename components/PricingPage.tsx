@@ -57,7 +57,7 @@ const PricingPage: React.FC<Props> = ({ userId }) => {
         {pricingPlan.map((plan: PricingPlan, index: number) => (
           <Card
             className={`${
-              plan.level === "Enterprise" && "bg-[#1c1c1c] text-white"
+              plan.level === "Enterprise" && "bg-[#060d0f] text-white"
             } w-[350px] flex flex-col justify-between`}
             key={index}
           >
