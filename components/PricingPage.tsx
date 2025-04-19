@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Button } from "./ui/button";
-// import { PricingPlan, pricingPlan } from "@/lib/pricingplan";
+import { PricingPlan, pricingPlan } from "@/lib/pricingplan";
 import { Badge } from "./ui/badge";
 import {useRouter}  from "next/navigation";
 // import { getStripe } from "@/lib/stripe-client";
@@ -110,4 +110,4 @@ const PricingPage: React.FC<Props> = ({ userId }) => {
   );
 };
 
-export default PricingPage;
+export default PricingPage
