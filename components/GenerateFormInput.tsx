@@ -37,6 +37,7 @@ const GenerateFormInput : React.FC<{text?:string}>= ({text}) => {
 
   useEffect(() => {
     if (state.success) {
+     console.log("response->",state.data);
      
       toast(state.message);
       router.push(`/dashboard/forms/edit/${state.data.id}`);
@@ -48,8 +49,12 @@ const GenerateFormInput : React.FC<{text?:string}>= ({text}) => {
 
   return (
     <form action={formAction} className='flex items-center gap-4 my-8'>
-        <Input  id="description"
-        name="description" value={description} onChange={changeEventHandler} type="text" placeholder='Write a prompt to generate forms ...'/>
+        <Input 
+        id="description"
+        name="description" 
+        value={description} onChange={changeEventHandler} type="text" placeholder='Write a prompt to generate forms ...'
+        required/>
+        
        <SubmitButton/>
     </form>
   )

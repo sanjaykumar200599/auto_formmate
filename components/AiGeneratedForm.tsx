@@ -44,7 +44,17 @@ const AiGeneratedForm: React.FC<Props> = ({ form, isEditMode }) => {
     // }
     
   };
-  const value = typeof form.content !== 'object' ? JSON.parse(form.content as any) : form.content;
+//   const value = typeof form.content !== 'object' ? JSON.parse(form.content as any) : form.content;
+const cleanJSONString = (str: string) => {
+    const match = str.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+    return match ? match[1] : str; // use the inner JSON if matched
+  };
+  
+  const value =
+    typeof form.content !== 'object'
+      ? JSON.parse(cleanJSONString(form.content as string))
+      : form.content;
+  
 
   let data;
 

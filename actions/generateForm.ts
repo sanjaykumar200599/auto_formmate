@@ -56,7 +56,7 @@ export const generateForm = async (prevState: unknown, formData: FormData) => {
 
         // Request GEMINI to generate the form content
 
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
         const resultCompletion = await model.generateContent(prompt);
         const response = await resultCompletion.response;
