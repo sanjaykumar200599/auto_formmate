@@ -1,14 +1,31 @@
 "use client"
-import React from 'react'
+import React, { useActionState, useState } from 'react'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { useFormStatus } from 'react-dom'
 import { Sparkles } from 'lucide-react'
+import { generateForm } from '@/actions/generateForm'
+import { text } from 'stream/consumers'
 
-const GenerateFormInput = () => {
+type InitialState={
+  message:string,
+  success:boolean,
+  data?:any
+}
+const initialState: InitialState={
+  message:"",
+  success:false
+}
+
+const GenerateFormInput : React.FC<{text?:string}>= ({text}) => {
+  const [description,setDescription]=useState<string>("");
+  const [state,formAction]=useActionState(generateForm,initialState)
+
+
+
   return (
-    <form className='flex items-center gap-4 my-8'>
-        <Input placeholder='Write a prompt to generate forms ...'/>
+    <form action={formAction} className='flex items-center gap-4 my-8'>
+        <Input value={text} type="text" placeholder='Write a prompt to generate forms ...'/>
        <SubmitButton/>
     </form>
   )
