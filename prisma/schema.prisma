@@ -1,12 +1,17 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
-}
+  // output   = "../app/generated/prisma"
+ }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
+}
+
+model Example {
+  id    Int     @id @default(autoincrement())
+  name  String
 }
 
 model Form{
@@ -26,4 +31,12 @@ model Submissions{
    formId Int
    form Form @relation(fields: [formId],references: [id])
    content Json
+}
+
+model Subscription {
+  id         String   @id @default(uuid())
+  userId     String
+  subscribed Boolean
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
