@@ -3,10 +3,10 @@
 import prisma from "@/lib/prisma"
 import { currentUser } from "@clerk/nextjs/server"
 import { z } from "zod";
-import OpenAI from "openai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { revalidatePath } from "next/cache";
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 
 export const generateForm = async (prevState: unknown, formData: FormData) => {
@@ -32,7 +32,7 @@ export const generateForm = async (prevState: unknown, formData: FormData) => {
 
         const description = result.data.description;
 
-        if (!process.env.OPENAI_API_KEY) {
+        if (!process.env.GEMINI_API_KEY) {
             return { success: false, message: "OPENAI api key not found" }
         }
 
@@ -47,27 +47,26 @@ export const generateForm = async (prevState: unknown, formData: FormData) => {
          }
         ]
         }
-Requirements:
-- Use only the given keys: "formTitle", "formFields", "label", "name", "placeholder".
-- Always include at least 3 fields in the "formFields" array.
-- Keep the field names consistent across every generation for reliable rendering.
-- Provide meaningful placeholder text for each field based on its label.
+        Requirements:
+        - Use only the given keys: "formTitle", "formFields", "label", "name", "placeholder".
+        - Always include at least 3 fields in the "formFields" array.
+        - Keep the field names consistent across every generation for reliable rendering.
+        - Provide meaningful placeholder text for each field based on its label.
         `;
 
-        // Request openai to generate the form content
+        // Request GEMINI to generate the form content
 
-        const completion = await openai.chat.completions.create({
-            messages: [{ role: "user", content: `${description} ${prompt}` }],
-            model: "gpt-4", // Ensure model name is correct
-        });
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-        const formContent = completion.choices[0]?.message.content;
+        const resultCompletion = await model.generateContent(prompt);
+        const response = await resultCompletion.response;
+        const formContent = response.text();
+
         if (!formContent) {
-            return { success: false, message: "Failed to generate form content" }
+        return { success: false, message: "Failed to generate form content" };
         }
 
-        console.log("generated form -> ",formContent);
-        
+        console.log("generated form -> ", formContent);
 
         // let formJsonData;
         // // try {
