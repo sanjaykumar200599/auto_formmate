@@ -19,7 +19,7 @@ const Edit = async ({ params }: { params: Promise<{ formId: string }> }) => {
     <Card>
       <CardHeader>
         <CardTitle>
-          <h1 className="font-bold text-2xl text-center">{form.content.formTitle || "NA"}</h1>
+          <h1 className="font-bold text-2xl text-center">{form.content.formTitle}</h1>
         </CardTitle>
       </CardHeader>
       <CardContent>

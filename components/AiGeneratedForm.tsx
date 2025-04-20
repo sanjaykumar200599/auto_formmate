@@ -10,10 +10,10 @@ import { submitForm } from "@/actions/submitForm";
 import toast from "react-hot-toast";
 
 type Props = { form: any; isEditMode: boolean };
-// type SubmitFormResponse = {
-//     success: boolean;
-//     message: string;
-//   };
+type SubmitFormResponse = {
+    success: boolean;
+    message: string;
+  };
   
 
 const AiGeneratedForm: React.FC<Props> = ({ form, isEditMode }) => {
@@ -47,7 +47,7 @@ const AiGeneratedForm: React.FC<Props> = ({ form, isEditMode }) => {
 //   const value = typeof form.content !== 'object' ? JSON.parse(form.content as any) : form.content;
 const cleanJSONString = (str: string) => {
     const match = str.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
-    return match ? match[1] : str; // use the inner JSON if matched
+    return match ? match[1] : str; 
   };
   
   const value =
